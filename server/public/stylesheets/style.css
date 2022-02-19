@@ -1,0 +1,36 @@
+select {
+  padding: 6px;
+  vertical-align: middle;
+  border: 1px solid #dedede;
+}
+
+.id_input {
+  width: 293px;
+  padding: 6px;
+  border: 1px solid #dedede;
+}
+
+.email_input {
+  width: 134px;
+  padding: 6px;
+  border: 1px solid #dedede;
+}
+
+.email_input:read-only {
+  background-color: #dedede;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 120px;
+}
+
+.swal {
+  color: black;
+}
