@@ -24,11 +24,6 @@ app.use('/', require('./routes/index.js'));
 
 
 
-
-app.use(session({secret : '비밀코드', resave : true, saveUninitialized: false}));
-app.use(passport.initialize());
-app.use(passport.session()); 
-
 app.get('/login',function(요청,응답){
     응답.render('login.ejs')
 });
