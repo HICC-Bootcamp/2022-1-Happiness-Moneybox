@@ -74,6 +74,13 @@ passport.use(new LocalStrategy({
       if (에러) return done(에러)
 
       if (!결과) return done(null, false, { message: '존재하지않는 아이디요' })
+      var crypto = require('crypto');
+      var name = 입력한비번;
+      var hash = crypto.createHash('md5').update(name).digest('hex');
+      console.log(hash); 
+      db.collection('post').insertOne({암호화 : hash},function(에러,결과){
+        console.log('저장완료');
+      });
       if (입력한비번 == 결과.password) {
         return done(null, 결과)
       } else {
