@@ -11,10 +11,17 @@ app.use(session({secret : '비밀코드', resave : true, saveUninitialized: fals
 app.use(passport.initialize());
 app.use(passport.session()); 
 var db;
+
 MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/moneybox?retryWrites=true&w=majority',function(error, client){
     if(error) return console.log(에러);
     db=client.db('moneybox');
     app.db=db;
+    //db에 데이터 저장하기
+    /*db.collection('post').insertOne({아이디 :'yejee', 비밀번호: 'yexxi'},function(에러,결과){
+      console.log('저장완료');
+    });
+    */
+
     app.listen(8080, function(){
         console.log('listening on 8080');
     });
@@ -23,16 +30,21 @@ MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/mon
 app.use('/', require('./routes/index.js'));
 
 
-
+//어떤사람이 /login으로 접속을 하면,
 app.get('/login',function(요청,응답){
     응답.render('login.ejs')
 });
 
 app.post('/login',   passport.authenticate('local',{
-    failureRedirect:'/fail'
+    failureRedirect:'/fail'//회원인증 실패 시, /fail로 이동
 })  ,function(요청,응답){
-    응답.redirect('/')
+    응답.redirect('/')//로그인 성공 시, 메인화면으로 이동
 });
+
+//로그인 실패시 /fail로 이동하면 로그인 화면이 뜸
+app.get('/fail', function(요청,응답){
+  응답.redirect('/login.ejs')
+})
 
 app.get('/mypage',로그인했니,function(요청,응답){
     응답.render('mypage.ejs')
@@ -46,20 +58,18 @@ function 로그인했니(요청,응답,next){
     }
 }
 
-
-
 passport.use(new LocalStrategy({
-    usernameField: 'id',
-    passwordField: 'pw',
+    usernameField: 'userId',
+    passwordField: 'password',
     session: true,
     passReqToCallback: false,
   }, function (입력한아이디, 입력한비번, done) {
     console.log(입력한아이디, 입력한비번);
-    db.collection('login').findOne({ id: 입력한아이디 }, function (에러, 결과) {
+    db.collection('login').findOne({ userId: 입력한아이디 }, function (에러, 결과) {
       if (에러) return done(에러)
 
       if (!결과) return done(null, false, { message: '존재하지않는 아이디요' })
-      if (입력한비번 == 결과.pw) {
+      if (입력한비번 == 결과.password) {
         return done(null, 결과)
       } else {
         return done(null, false, { message: '비번틀렸어요' })
