@@ -10,6 +10,7 @@ app.set('view engine', 'ejs');
 app.use(session({secret : '비밀코드', resave : true, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session()); 
+app.use('/public', express.static('public'));
 var db;
 
 MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/moneybox?retryWrites=true&w=majority',function(error, client){
@@ -37,14 +38,18 @@ app.get('/login',function(요청,응답){
 
 app.post('/login',   passport.authenticate('local',{
     failureRedirect:'/fail'//회원인증 실패 시, /fail로 이동
+    
+
+
 })  ,function(요청,응답){
     응답.redirect('/')//로그인 성공 시, 메인화면으로 이동
 });
 
 //로그인 실패시 /fail로 이동하면 로그인 화면이 뜸
 app.get('/fail', function(요청,응답){
-  응답.redirect('/login.ejs')
+  응답.render('login.ejs')
 })
+
 
 app.get('/mypage',로그인했니,function(요청,응답){
     응답.render('mypage.ejs')
@@ -65,7 +70,7 @@ passport.use(new LocalStrategy({
     passReqToCallback: false,
   }, function (입력한아이디, 입력한비번, done) {
     console.log(입력한아이디, 입력한비번);
-    db.collection('login').findOne({ userId: 입력한아이디 }, function (에러, 결과) {
+    db.collection('user').findOne({ userId: 입력한아이디 }, function (에러, 결과) {
       if (에러) return done(에러)
 
       if (!결과) return done(null, false, { message: '존재하지않는 아이디요' })
@@ -79,12 +84,12 @@ passport.use(new LocalStrategy({
 
 
   passport.serializeUser(function (user, done) {
-    done(null, user.id)
+    done(null, user.userId)
   });
   
 
   passport.deserializeUser(function (아이디, done) {
-    db.collection('login').findOne({ id: 아이디 }, function (에러, 결과) {
+    db.collection('user').findOne({ userId: 아이디 }, function (에러, 결과) {
       done(null, 결과)
     })
   }); 
