@@ -35,6 +35,30 @@ $(".id_check_button").click(function () {
       });
   });
 
+  function passwordSame(){
+    var password=document.getElementById('password').value;
+    var passwordCheck=document.getElementById('passwordCheck').value;
+
+    if(!((password=="")&&(passwordCheck=="")))
+    {
+      if(password==passwordCheck){
+         document.getElementById('passwordCheck_alert').textContent='비밀번호가 일치합니다.'; 
+         document.getElementById('passwordCheck_alert').style.color='blue';
+         document.getElementById('password').setAttribute("check_result", "success");
+        }
+      if((password!=passwordCheck))
+      {
+        document.getElementById('passwordCheck_alert').textContent='비밀번호가 일치하지 않습니다.';
+        document.getElementById('passwordCheck_alert').style.color='red';
+        document.getElementById('password').setAttribute("check_result", "fail");
+       } 
+    }
+    else
+    {
+      document.getElementById('passwordCheck_alert').textContent='';
+    }
+  }
+  
   function selectEmail() {
     var $email2 = $("input[name=email2]"); 
     if ($("#select-email").val() == "1") {
@@ -49,6 +73,11 @@ $(".id_check_button").click(function () {
   $("form").submit(function () {
     if ($(".id_input").attr("check_result") == "fail") {
       swal("아이디가 중복인지 확인해주십시오.");
+      return false;
+    }
+
+    if ($("#password").attr("check_result") == "fail") {
+      swal("비밀번호가 일치하는지 확인해주십시오.");
       return false;
     }
   });
