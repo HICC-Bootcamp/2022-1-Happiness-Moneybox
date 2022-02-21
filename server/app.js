@@ -13,6 +13,7 @@ app.use(passport.session());
 app.use('/public', express.static('public'));
 app.use('/', require('./routes/index.js'));
 app.use('/auth',require('./routes/auth.js'));
+app.use('/posts', require('./routes/posts.js'));
 
 var db;
 MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/moneybox?retryWrites=true&w=majority',{ useUnifiedTopology: true },function(error, client){

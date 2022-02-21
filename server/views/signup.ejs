@@ -19,9 +19,9 @@
             pattern="[A-Za-z0-9]{4,24}"
             required
             check_result="fail"
-            title="8~16자의 알파벳 또는 숫자의 조합이어야 합니다."
+            title="4~24자의 알파벳 또는 숫자의 조합이어야 합니다."
           />
-          <button type="button" class="id_check_button btn btn-secondary">
+          <button type="button" class="id_check_button btn btn-secondary mt-2">
             중복확인
           </button>
           <i
@@ -32,10 +32,9 @@
         </div>
 
         <div class="form-group">
-          <label for="password" class="form-label">비밀번호</label>
+          <label for="password">비밀번호</label>
           <input
             type="password"
-            class="form-control"
             name="password"
             id="password"
             pattern="^(?=.*[A-Za-z0-9]).{8,16}$"
@@ -52,7 +51,6 @@
           <label for="passwordCheck" class="form-label">비밀번호 확인</label>
           <input
             type="password"
-            class="form-control"
             id="passwordCheck"
             placeholder="8~16자의 알파벳 또는 숫자의 조합"
             pattern="^(?=.*[A-Za-z0-9]).{8,16}$"
@@ -88,7 +86,6 @@
           <label for="nickname" class="form-label">닉네임</label>
           <input
             type="input"
-            class="form-control"
             name="nickname"
             id="nickname"
             placeholder="16자 이내의 알파벳 또는 숫자의 조합"

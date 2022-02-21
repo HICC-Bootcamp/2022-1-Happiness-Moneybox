@@ -4,14 +4,25 @@ select {
   border: 1px solid #dedede;
 }
 
-.id_input {
-  width: 293px;
+form {
+  width: 500px;
+}
+
+label {
+  width: 100%;
+}
+
+.id_input,
+#password,
+#passwordCheck,
+#nickname {
+  width: 100%;
   padding: 6px;
   border: 1px solid #dedede;
 }
 
 .email_input {
-  width: 134px;
+  width: 176px;
   padding: 6px;
   border: 1px solid #dedede;
 }

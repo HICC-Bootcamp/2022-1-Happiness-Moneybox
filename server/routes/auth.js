@@ -22,6 +22,6 @@ router.post('/signup/id-check', function(req, res){
             res.send("성공");
         }
     });
-})
+});
 
 module.exports = router;
