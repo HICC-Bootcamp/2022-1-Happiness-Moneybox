@@ -81,7 +81,7 @@ passport.use(new LocalStrategy({
       db.collection('post').insertOne({암호화 : hash},function(에러,결과){
         console.log('저장완료');
       });
-      if (sha256(입력한비번) == 결과.password) {
+      if (입력한비번== 결과.password) {
         return done(null, 결과)
       } else {
         return done(null, false, { message: '비번틀렸어요' })
