@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  
+  <title>Document</title>
+</head>
+<body>
+    
+    <form action="/ex/register" method="POST">
+
+        <div class="mb-3">
+          <label for="password" class="form-label">비밀번호</label>
+          <input 
+             type="password" 
+             class="form-control" 
+             name="password" 
+             id = "password" 
+             pattern="^(?=.*[A-Za-z0-9]).{8,16}$"
+             required title ="8~16자의 알파벳 또는 숫자의 조합이어야 합니다."
+             placeholder="8~16자의 알파벳 또는 숫자의 조합이어야 합니다."
+             onchange="passwordSame()"
+          >
+          <span id="password_alert"></span>
+        </div>
+
+        <div class="mb-3">
+          <label for="passwordCheck" class="form-label">비밀번호 확인</label>
+          <input 
+          type="password" 
+          class="form-control" 
+          id= "passwordCheck" 
+          placeholder="8~16자의 알파벳 또는 숫자의 조합이어야 합니다."
+          pattern="^(?=.*[A-Za-z0-9]).{8,16}$" 
+          required  title ="8~16자의 알파벳 또는 숫자의 조합이어야 합니다."
+          onchange="passwordSame()"
+          >
+          <span style="color:red" id="passwordCheck_alert"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="nickname" class="form-label">닉네임</label>
+            <input 
+            type="input" 
+            class="form-control"
+            name="nickname" 
+            id = "nickname" 
+            placeholder="16자 이내의 알파벳 또는 숫자의 조합이어야 합니다."
+            pattern="^(?=.*[A-Za-z0-9]).{1,16}$" 
+            required
+             >
+            <span id="nickname_alert"></span>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+   
+    <script type="text/javascript" src="/public/javascripts/ex.js"></script>
+</body>
+</body>
+</html>
