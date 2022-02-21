@@ -12,6 +12,8 @@ app.use(passport.initialize());
 app.use(passport.session()); 
 app.use('/public', express.static('public'));
 var db;
+var sha256 = require('sha256');
+var salt = '10293018@!3$2%^'
 
 MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/moneybox?retryWrites=true&w=majority',function(error, client){
     if(error) return console.log(에러);
@@ -74,9 +76,7 @@ passport.use(new LocalStrategy({
       if (에러) return done(에러)
 
       if (!결과) return done(null, false, { message: '존재하지않는 아이디요' })
-      var crypto = require('crypto');
-      var name = 입력한비번;
-      var hash = crypto.createHash('md5').update(name).digest('hex');
+      var hash = sha256(입력한비번)
       console.log(hash); 
       db.collection('post').insertOne({암호화 : hash},function(에러,결과){
         console.log('저장완료');
