@@ -44,13 +44,13 @@ function passwordSame(){
     if(password==passwordCheck){
        $('#passwordCheck_alert').text('비밀번호가 일치합니다'); 
        $('#passwordCheck_alert').css("color","blue");
-       $('#password').setAttribute("check_result", "success");
+       $('#password').attr("check_result", "success");
       }
     if((password!=passwordCheck))
     {
       $('#passwordCheck_alert').text('비밀번호가 일치하지 않습니다.');
       $('#passwordCheck_alert').css('color','red');
-      $('#password').setAttribute("check_result", "fail");
+      $('#password').attr("check_result", "fail");
      } 
   }
   else
