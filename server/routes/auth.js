@@ -7,7 +7,12 @@ router.get('/signup', function(req, res){
 });
 
 router.post('/signup', function(req, res){
-     req.app.db.collection('user').insertOne({userId:req.body.id, email:req.body.email1+'@'+req.body.email2, password:sha256(req.body.password+salt), nickname:req.body.nickname}, 
+     req.app.db.collection('user').insertOne({
+         userId:req.body.id, 
+         email:req.body.email1+'@'+req.body.email2, 
+         password:sha256(req.body.password+salt), 
+         nickname:req.body.nickname
+        }, 
      function(error, result){
         res.redirect('/'); //나중에 로그인 페이지로 변경하기
     });
