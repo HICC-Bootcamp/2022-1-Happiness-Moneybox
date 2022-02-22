@@ -35,11 +35,8 @@ passport.use(new LocalStrategy({
       if (error) return done(error)
 
       if (!result) return done(null, false, { message: '존재하지않는 아이디요' })
-      var hash = sha256(InputId+salt)
-      db.collection('post').insertOne({hashing: hash},function(error,result){
-        console.log('저장완료');
-      });
-      if (InputPW== result.password) {
+      var hash = sha256(InputPW+salt)
+      if (sha256(InputPW+salt) == result.password) {
         return done(null, result)
       } else {
         return done(null, false, { message: '비번틀렸어요' })
