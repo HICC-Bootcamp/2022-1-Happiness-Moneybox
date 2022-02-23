@@ -12,20 +12,16 @@ MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/mon
     db=client.db('moneybox');
     router.db=db;
     
-});//이게 있었어야함ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ
+});
 
 router.get('/login',function(req,res){
     res.render('login.ejs')
 });
 
 router.post('/login', passport.authenticate('local',{
-    failureRedirect:'/fail'
+    failureRedirect:'/auth/login'
 })  ,function(req,res){
     res.redirect('/')
-});
-
-router.get('/fail', function(req,res){
-    res.render('/login')
 });
 
 passport.use(new LocalStrategy({
@@ -40,7 +36,7 @@ passport.use(new LocalStrategy({
 
       if (!result) return done(null, false, { message: '존재하지않는 아이디요' })
       var hash = sha256(InputPW+salt)
-      if (InputPW == result.password) {
+      if (hash == result.password) {
         return done(null, result)
       } else {
         return done(null, false, { message: '비번틀렸어요' })
@@ -60,5 +56,16 @@ passport.deserializeUser(function (아이디, done) {
 }); 
 
 
+router.get('/mypage',isAuth,function(req,res){
+  res.render('mypage.ejs')
+});
+
+function isAuth(req,res,next){
+  if(req.user){
+      next()
+  }else{
+      res.send('로그인안하셨는데요?')
+  }
+}
 
 module.exports = router;
