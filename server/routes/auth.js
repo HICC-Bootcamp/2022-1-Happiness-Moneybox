@@ -8,7 +8,7 @@ const session = require('express-session');
 const MongoClient = require('mongodb').MongoClient;
 
 MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/moneybox?retryWrites=true&w=majority',{ useUnifiedTopology: true },function(error, client){
-    if(error) return console.log(에러);
+    if(error) return console.log(error);
     db=client.db('moneybox');
     router.db=db;
     
@@ -50,8 +50,8 @@ passport.serializeUser(function (user, done) {
   
 
 passport.deserializeUser(function (아이디, done) {
-    db.collection('user').findOne({ userId: 아이디 }, function (에러, 결과) {
-      done(null, 결과)
+    db.collection('user').findOne({ userId: 아이디 }, function (error, result) {
+      done(null, result)
     })
 }); 
 

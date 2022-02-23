@@ -21,7 +21,7 @@ var sha256= require('sha256');
 var salt='10293018@!3$2%^';
 
 MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/moneybox?retryWrites=true&w=majority',{ useUnifiedTopology: true },function(error, client){
-    if(error) return console.log(에러);
+    if(error) return console.log(error);
     db=client.db('moneybox');
     app.db=db;
     app.listen(8080, function(){
