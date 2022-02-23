@@ -1,9 +1,7 @@
 var router = require('express').Router();
 
-router.get('/', function(req, res){
-    req.app.db.collection('user').find().toArray(function(error,result){
-        res.render('index.ejs', {user:result});
-    });
+router.get('/' ,function(req, res){
+    res.render('index.ejs');
 });
 
 module.exports = router;

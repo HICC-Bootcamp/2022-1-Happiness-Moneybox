@@ -5,6 +5,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 
+
 app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(session({secret : '비밀코드', resave : true, saveUninitialized: false}));
@@ -29,12 +30,49 @@ MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/mon
     });
 });
 
+passport.use(new LocalStrategy({
+    usernameField: 'userId',
+    passwordField: 'password',
+    session: true,
+    passReqToCallback: false,
+  }, function (InputId, InputPW, done) {
+    console.log(InputId, InputPW);
+    app.db.collection('user').findOne({ userId: InputId }, function (error, result) {
+      if (error) {return done(error)}
 
+      if (!result) {return done(null, false, { message: '존재하지않는 아이디요' })}
+      var hash = sha256(InputPW+salt)
+      if (hash == result.password) {
+        return done(null, result)
+      } else {
+        return done(null, false, { message: '비번틀렸어요' })
+      }
+    })
+  }));
+
+passport.serializeUser(function (user, done) {
+    done(null, user.userId)
+});
+  
+
+passport.deserializeUser(function (ID, done) {
+    app.db.collection('user').findOne({ userId: ID }, function (error, result) {
+      done(null, result)
+    })
+}); 
+
+function isntAuth(req,res,next){
+    if(req.user){
+        res.send('로그인안하셨는데요?');
+    }else{
+        next();
+    }
+  }
 
 function isAuth(req,res,next){
     if(req.user){
-        next()
+        next();
     }else{
-        res.send('로그인안하셨는데요?')
+        res.send('로그인안하셨는데요?');
     }
 }
