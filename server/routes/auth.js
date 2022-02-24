@@ -2,7 +2,6 @@ var router = require('express').Router();
 var sha256= require('sha256');
 const crypto = require('crypto');
 
-
 module.exports = function(passport){
   router.get('/login',isnotAuth,function(req,res){
     res.render('login.ejs')
@@ -11,7 +10,7 @@ module.exports = function(passport){
   router.post('/login', passport.authenticate('local',{
     failureRedirect:'/auth/login'
     })  ,function(req,res){
-    res.redirect('/')
+    res.redirect('/posts')
   });
 
  router.get('/signup', function(req, res){
@@ -57,13 +56,5 @@ router.post('/signup/id-check', function(req, res){
   }
 }
 
-function isAuth(req,res,next){
-  if(req.user){
-   next()
-  }else{
-   res.send('로그인을 해주세요.')
- }
-}
   return router;
-
 }
