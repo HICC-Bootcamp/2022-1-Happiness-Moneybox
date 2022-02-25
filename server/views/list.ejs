@@ -30,7 +30,8 @@
             <tr>
               <td><%= posts[i].date %></td>
               <td>
-                <a class="post" href="#"><%= posts[i].title %></a>
+                <a class="post" href="/posts/<%= posts[i]._id %>">
+                  <%= posts[i].title %></a>
               </td>
               <td><%= posts[i].money %></td>
               <td class="delete-on">
@@ -44,7 +45,7 @@
       <button type="button" class="btn btn-primary mt-5 btn-list delete-send">
         Delete
       </button>
-      <button type="button" class="btn btn-primary mt-5 btn-list add">
+      <button type="button" class="btn btn-primary mt-5 btn-list add"  onclick="location.href='/auth/write' ">
         Add
       </button>
       <div class="mt-4 dday-congratulation">
