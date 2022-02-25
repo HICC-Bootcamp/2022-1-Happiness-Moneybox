@@ -13,7 +13,7 @@ router.use(isAuth);
 router.get('/', function(req, res){
   req.app.db.collection('posts').find({userId:req.user.userId}).toArray(function(error, result){
     var posts=result;
-    req.app.db.collection('happymoney').find({userId:req.user.userId}).toArray(function(error, result){
+    req.app.db.collection('information').find({userId:req.user.userId}).toArray(function(error, result){
       res.render('list.ejs', { posts : posts, user: req.user, happymoney:result});
     });
   });
@@ -21,8 +21,8 @@ router.get('/', function(req, res){
 
 router.get('/write', function(req, res){
 
-  req.app.db.collection('happymoney').findOne({userId : req.user.userId}, function(error,result){
-    res.render('write.ejs',{currentMoney:result.Happy_money});
+  req.app.db.collection('information').findOne({userId : req.user.userId}, function(error,result){
+    res.render('write.ejs',{currentMoney:result.happy_money, currentdesign:result.nowdesign});
   });
 })
 
@@ -30,11 +30,11 @@ router.post('/write', function (req, res) {
     req.app.db.collection('counter').findOne({name : '게시물갯수'}, function(error,result){
       var postNumber = result.totalPost;
      
-      req.app.db.collection('happymoney').findOne({userId : req.user.userId}, function(error,result){
+      req.app.db.collection('information').findOne({userId : req.user.userId}, function(error,result){
 
         var currentmoney=parseInt(req.body.money);
 
-        req.app.db.collection('happymoney').updateOne({userId:req.user.userId},{ $inc: {Happy_money: currentmoney} },function(error,result){
+        req.app.db.collection('information').updateOne({userId:req.user.userId},{ $inc: {happy_money: currentmoney} },function(error,result){
           if(error){return console.log(error)}
           })
         })

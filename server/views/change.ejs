@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Happy Bank
+        </title>
+
+        <%- include('head.ejs') %>
+
+        <link href="/public/stylesheets/navstyle.css" rel="stylesheet">
+
+        <style>
+
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+          .text-control{
+            display:inline-block;
+            position:absolute;
+            top:78%;
+            left:25%;
+            font-size:35px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight:600;
+            color:black;
+          }
+
+          .font-control{
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size:30px;
+            padding-right:10px;
+          }
+
+          #title{
+            display:block;
+            padding-left:5%;
+            padding-top:2%;
+            font-weight:530;
+            font-size:25px;
+          }
+
+          .picture{
+            display:inline;
+            width:20%;
+            padding:3%;
+
+          }
+
+          .picture-control{
+            display:inline-block;
+            position:absolute;
+            top:27%;
+            left:15%;
+            right:10%
+          }
+
+        </style>
+    </head>
+
+  <body>
+
+    <%- include('navstyle.html') %>
+
+    <h2 class="font-control mb-3" id="title">디자인 변경</h2>
+
+    <div class="picture-control">
+        <span class="font-control">Shape</span> 
+        <img src="public/images/bottle.png" class="picture">
+        <img src="public/images/longbottle.png" class="picture">
+        <img src="public/images/pig.png" class="picture">
+        <img src="public/images/giftbag.png" class="picture">
+
+    </div>
+
+    <form action="/change" method="POST">
+        <select class="custom-select" name="design">
+            <option selected>디자인</option>
+            <option value='/public/images/bottle.png'>bottle</option>
+            <option value='/public/images/longbottle.png'>long bottle</option>
+            <option value='/public/images/pig.png'>pig</option>
+            <option value='/public/images/giftbag.png'>gift bag</option>
+          </select>
+        <button type="submit" class="btn btn-light">Light</button>
+    </form>
+    
+    <script type="text/javascript" src="/public/javascripts/dday.js"></script>
+  </body>
+  
+</html>
