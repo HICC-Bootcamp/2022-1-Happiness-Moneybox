@@ -6,7 +6,7 @@
   <body>
     <div id="picture">
       <img src="public/images/pig.jpg" id="picture-inside" />
-      <div id="total-money"><%= happymoney[0].Happy_money %>원</div>
+      <div id="total-money"><%= money %>원</div>
     </div>
     <div id="list">
       <div class="mt-5 last-day">
@@ -59,9 +59,7 @@
           <span id="year"></span>년 <%= user.nickname %>님은
         </h4>
         <h4 class="text-center">행복한 기억을 <%= i %>개,</h4>
-        <h4 class="text-center">
-          총 <%= happymoney[0].Happy_money %>원 저금하였습니다.
-        </h4>
+        <h4 class="text-center">총 <%= money %>원 저금하였습니다.</h4>
       </div>
     </div>
 
