@@ -13,7 +13,7 @@ router.get('/', function(req, res){
   req.app.db.collection('posts').find({userId:req.user.userId}).toArray(function(error, result){
     var posts=result;
     req.app.db.collection('happymoney').find({userId:req.user.userId}).toArray(function(error, result){
-      res.render('list.ejs', { posts : posts, user: req.user, happymoney:result});
+      res.render('list.ejs', { posts : posts, user: req.user, money:result[0].happy_money});
     });
   });
 });
