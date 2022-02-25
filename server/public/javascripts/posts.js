@@ -1,13 +1,14 @@
 $(".delete").click(function (e) {
-  var 글번호 = e.target.dataset.id;
-  var 지금누른거 = $(this);
+  var num = e.target.dataset.id;
+  var button_on = $(this);
+  //var money = button_on.parent("td").prevAll("#delete-money").val;
   $.ajax({
     method: "DELETE",
-    url: "/posts/" + 글번호,
+    url: "/posts/" + num,
   })
     .done(function (결과) {
-      console.log("삭제 성공했어용");
-      지금누른거.parent("td").parent("tr").fadeOut();
+      button_on.parent("td").parent("tr").fadeOut();
+     // $("#total-money").html(total_money-delete_money[num]);
     })
     .fail(function (xhr, textStatus, errorThrown) {
       console.log(xhr, textStatus, errorThrown);

@@ -18,10 +18,10 @@ router.get('/', function(req, res){
   });
 });
 
-router.delete('/:id', function(요청, 응답){
-  var 삭제할데이터 = {id: parseInt(요청.params.id), userId: 요청.user.userId}   // 삭제할데이터={_id 로 수정 필수!!!!!!!}
-  요청.app.db.collection('posts').deleteOne( 삭제할데이터, function(에러, 결과){
-      응답.status(204).send({message: '삭제 성공했습니다'});
+router.delete('/:id', function(req, res){
+  var delete_data = {id: parseInt(req.params.id), userId: req.user.userId}   // 삭제할데이터={_id 로 수정 필수!!!!!!!}
+  req.app.db.collection('posts').deleteOne( delete_data, function(error, result){
+      res.status(204).send({message: '삭제 성공했습니다'});
   });
 });
 

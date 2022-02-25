@@ -7,6 +7,10 @@
     <div id="picture">
       <img src="public/images/pig.jpg" id="picture-inside" />
       <div id="total-money"><%= money %>원</div>
+      <!-- <script>
+        const total_money = "<%= money %>";
+        var delete_money = [];
+      </script> -->
     </div>
     <div id="list">
       <div class="mt-5 last-day">
@@ -32,7 +36,10 @@
               <td>
                 <a class="post" href="#"><%= posts[i].title %></a>
               </td>
-              <td><%= posts[i].money %></td>
+              <td id="delete-money"><%= posts[i].money %></td>
+              <!-- <script>
+                delete_money[i] = "<%= posts[i].money %>";
+              </script> -->
               <td class="delete-on">
                 <button
                   type="button"
