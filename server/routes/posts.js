@@ -19,8 +19,22 @@ router.get('/', function(req, res){
   });
 });
 
-router.get('/write', function(req, res){
+router.delete('/:id', function(req, res){
+  var delete_data = {_id: parseInt(req.params.id), userId: req.user.userId};
 
+  req.app.db.collection('posts').findOne(delete_data, function(error,result){
+    var delete_money = -result.money;
+    req.app.db.collection('information').updateOne({userId : req.user.userId}, {$inc:{happy_money:delete_money}},function(error,result){
+      if(error){return console.log(error)}
+    });
+  });
+
+  req.app.db.collection('posts').deleteOne( delete_data, function(error, result){
+    res.status(204).send({message: '삭제 성공했습니다'});
+  });
+});
+
+router.get('/write', function(req, res){
   req.app.db.collection('information').findOne({userId : req.user.userId}, function(error,result){
     res.render('write.ejs',{currentMoney:result.happy_money, currentdesign:result.nowdesign});
   });
@@ -31,9 +45,7 @@ router.post('/write', function (req, res) {
       var postNumber = result.totalPost;
      
       req.app.db.collection('information').findOne({userId : req.user.userId}, function(error,result){
-
         var currentmoney=parseInt(req.body.money);
-
         req.app.db.collection('information').updateOne({userId:req.user.userId},{ $inc: {happy_money: currentmoney} },function(error,result){
           if(error){return console.log(error)}
           })
@@ -44,10 +56,8 @@ router.post('/write', function (req, res) {
         req.app.db.collection('counter').updateOne({name:'게시물갯수'},{ $inc: {totalPost:1} },function(error,result){
         if(error){return console.log(error)}
           res.send('전송완료');
-
         })
       })
-  
     })
   })
 
