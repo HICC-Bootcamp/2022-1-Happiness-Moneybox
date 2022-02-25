@@ -1,18 +1,17 @@
-$(".delete").click(function (e) {
-  var num = e.target.dataset.id;
-  var button_on = $(this);
-  //var money = button_on.parent("td").prevAll("#delete-money").val;
-  $.ajax({
-    method: "DELETE",
-    url: "/posts/" + num,
-  })
-    .done(function (결과) {
-      button_on.parent("td").parent("tr").fadeOut();
-     // $("#total-money").html(total_money-delete_money[num]);
+$(".delete").click(function (button) {
+  if(confirm("삭제하시면 복구할 수 없습니다. 정말 삭제하시겠습니까?")){
+    var num = button.target.dataset.id;
+    $.ajax({
+      method: "DELETE",
+      url: "/posts/" + num,
+    })
+     .done(function (결과) {
+      location.reload();
     })
     .fail(function (xhr, textStatus, errorThrown) {
       console.log(xhr, textStatus, errorThrown);
     });
+  }
 });
 
 $(".delete-send").click(function () {
