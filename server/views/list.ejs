@@ -34,7 +34,13 @@
               </td>
               <td><%= posts[i].money %></td>
               <td class="delete-on">
-                <button type="button" class="btn btn-danger delete">X</button>
+                <button
+                  type="button"
+                  class="btn btn-danger delete"
+                  data-id="<%= posts[i].id %>"
+                >
+                  X
+                </button>
               </td>
             </tr>
             <% } %>
