@@ -10,7 +10,7 @@ var date = new Date("12,31,2022").getTime();
 var now = new Date();
 var year = now.getFullYear();
 var dday = Math.floor((date - now) / (1000 * 60 * 60 * 24)) + 1;
-dday = 0;
+//dday = 0;
 $("#d-day").html(dday);
 $("#year").html(year);
 
