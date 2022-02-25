@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Happy Bank
+        </title>
+
+        <%- include('head.ejs') %>
+
+        <link href="/public/stylesheets/navstyle.css" rel="stylesheet">
+
+        <style>
+
+          .form-style{
+            margin:50px;
+            margin-right:0;
+            margin-left:55%;
+            display: inline-block;
+            
+          }
+          
+          .btn-group{
+            width:500px;
+          }
+
+          .custom-select{
+            width:230px;
+          }
+
+          .date{
+            padding-left:40px;
+            width:270px;
+          }
+          
+          .money-control{
+            display:inline-block;
+            position:absolute;
+            top:78%;
+            left:20%;
+            padding:10px;
+            font-size:38px;
+            font-weight:600;
+            color:rgb(241,196,15);
+          }
+
+        </style>
+    </head>
+
+  <body>
+
+    <%- include('navstyle.html') %>
+    
+    <div class="pig-control"><img src=" <%= currentdesign %>" width="90%"></div>
+
+    <div class="money-control"><%= currentMoney %> won</div>
+
+    <form action="/posts/write" method="POST" class="form-style">
+      
+      <div class="mb-3">
+        <input type="text" class="form-control title" name="title" placeholder="제목을 입력해주세요." maxlength="15">
+      </div>
+
+      <div class="btn-group mb-3">
+
+        <select class="custom-select" name="money">
+          <option selected>Happy Money</option>
+          <option value=5000>5000</option>
+          <option value=10000>10000</option>
+          <option value=15000>15000</option>
+        </select>
+
+         <div class="form-group date">
+           <input type="date" name="date" min="2020-01-01"
+              max="2030-12-31" class="form-control">
+         </div>
+       
+      </div>
+
+      <div class="mb-3">
+        <textarea class="form-control content" name="content" rows="15" placeholder="내용을 입력해주세요."></textarea>
+      </div>
+
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-light" onclick="return empty_check()">Submit</button>
+      </div>
+
+    </form>
+
+    <script type="text/javascript" src="/public/javascripts/write.js"></script>
+  </body>
+  
+</html>
