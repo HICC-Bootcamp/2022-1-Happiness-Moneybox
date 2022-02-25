@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('head.ejs') %>
+  </head>
+
+  <body>
+    <%- include('navstyle.html') %>
+
+    <h2 class="font-control mb-3" id="title">디자인 변경</h2>
+
+    <div class="picture-control">
+      <span class="font-control">Shape</span>
+      <img src="public/images/bottle.png" class="picture" />
+      <img src="public/images/longbottle.png" class="picture" />
+      <img src="public/images/pig.png" class="picture" />
+      <img src="public/images/giftbag.png" class="picture" />
+    </div>
+
+    <form action="/design" method="POST">
+      <select class="custom-select" name="design">
+        <option selected>디자인</option>
+        <option value="/public/images/bottle.png">bottle</option>
+        <option value="/public/images/longbottle.png">long bottle</option>
+        <option value="/public/images/pig.png">pig</option>
+        <option value="/public/images/giftbag.png">gift bag</option>
+      </select>
+      <button type="submit" class="btn btn-light">Light</button>
+    </form>
+
+    <script type="text/javascript" src="/public/javascripts/design.js"></script>
+  </body>
+</html>

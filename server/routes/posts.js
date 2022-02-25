@@ -14,7 +14,7 @@ router.get('/', function(req, res){
   req.app.db.collection('posts').find({userId:req.user.userId}).toArray(function(error, result){
     var posts=result;
     req.app.db.collection('information').find({userId:req.user.userId}).toArray(function(error, result){
-      res.render('list.ejs', { posts : posts, user: req.user, money:result[0].happy_money});
+      res.render('list.ejs', { posts : posts, user: req.user, money:result[0].happy_money, design:result[0].nowdesign});
     });
   });
 });
@@ -55,7 +55,7 @@ router.post('/write', function (req, res) {
         ,function (error, result) {
         req.app.db.collection('counter').updateOne({name:'게시물갯수'},{ $inc: {totalPost:1} },function(error,result){
         if(error){return console.log(error)}
-          res.send('전송완료');
+          res.redirect('/posts');
         })
       })
     })

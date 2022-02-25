@@ -13,8 +13,7 @@ var passport= require('./lib/passport')(app);
 app.use('/', require('./routes/index.js'));
 app.use('/auth',require('./routes/auth.js')(passport));
 app.use('/posts', require('./routes/posts.js'));
-app.use('/dday', require('./routes/dday.js'));
-app.use('/change', require('./routes/change.js'));
+app.use('/design', require('./routes/design.js'));
 
 var db;
 MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/moneybox?retryWrites=true&w=majority',{ useUnifiedTopology: true },function(error, client){
