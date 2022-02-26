@@ -50,7 +50,7 @@ router.post('/signup/id-check', function(req, res){
 
  function isnotAuth(req,res,next){
   if(req.user){
-      res.send('로그인하셨는데요?');
+      res.send('로그인 하셨습니다.');
   }else{
       next();
   }

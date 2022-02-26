@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Happy Bank
+        </title>
+
+        <%- include('head.ejs') %>
+
+        <link href="/public/stylesheets/navstyle.css" rel="stylesheet">
+
+        <style>
+
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+          .font-design{
+            font-family: 'Noto Sans KR', sans-serif;
+            display:block;
+            padding-left:5%;
+            padding-top:2%;
+            font-weight:530;
+            font-size:25px;
+          }
+
+          .picture-design{
+            display:inline;
+            width:20%;
+            padding:3%;
+          }
+
+          .picture-control{
+            display:inline-block;
+            position:absolute;
+            top:20%;
+            left:20%;
+            right:10%
+          }
+
+          .select-detail{
+            display:inline-block;
+            position:absolute;
+            top:23%;
+            left:5%;
+            width:10%;
+          }
+
+          .button-detail{
+            font-size:20px;
+            display:inline-block;
+            position:absolute;
+            top:82%;
+            left:45%;
+            width:10%;
+          }
+
+        </style>
+    </head>
+
+  <body>
+
+    <%- include('navstyle.html') %>
+
+    <h2 class="font-design mb-3" id="title">디자인 변경</h2>
+    
+    <div class="picture-control">
+
+      <div>
+        <img src="public/images/bottle.png" class="picture-design" title="bottle">
+        <img src="public/images/longbottle.png" class="picture-design" title="long bottle" >
+        <img src="public/images/pig.png" class="picture-design" title="pig" >
+        <img src="public/images/piggybank.png" class="picture-design"  title="piggy bank">
+      </div>
+      <div>
+        <img src="public/images/beaker.png" class="picture-design" title="beaker">
+        <img src="public/images/purplebeaker.png" class="picture-design" title="purple beaker">
+        <img src="public/images/giftboxes.png" class="picture-design" title="gift boxes" >
+        <img src="public/images/giftbox.png" class="picture-design" title="gift box" >
+      </div>
+
+    </div>
+
+    <form action="/design" method="POST">
+      
+      <div class="select-control">
+        <select class="custom-select select-detail" name="design">
+            <option selected >Design</option>
+            <option value='/public/images/bottle.png' >bottle</option>
+            <option value='/public/images/longbottle.png' >long bottle</option>
+            <option value='/public/images/pig.png' >pig</option>
+            <option value='/public/images/piggybank.png'>piggy bank</option>
+            <option value='/public/images/beaker.png' >beaker</option>
+            <option value='/public/images/purplebeaker.png' >purple beaker</option>
+            <option value='/public/images/giftboxes.png' >gift boxes</option>
+            <option value='/public/images/giftbox.png' >gift box</option>
+            
+        </select>
+        <button type="submit" class="btn btn-Light button-detail" >Submit</button>
+      </div>
+
+    </form>
+    
+    
+  </body>
+  
+</html>

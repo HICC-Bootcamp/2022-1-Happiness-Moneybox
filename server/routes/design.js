@@ -1,7 +1,17 @@
 var router = require('express').Router();
 
+function isAuth(req,res,next){
+    if(req.user){
+     next()
+    }else{
+     res.send('로그인을 해주세요.')
+   }
+}
+
+router.use(isAuth);
+
 router.get('/',function(req, res){
-    res.render('change.ejs');
+    res.render('design.ejs');
 });
 
 router.post('/', function(req, res){
