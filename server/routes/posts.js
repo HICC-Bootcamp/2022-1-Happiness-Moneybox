@@ -61,4 +61,11 @@ router.post('/write', function (req, res) {
     })
   })
 
+  router.get('/:id', function(req, res){
+    req.app.db.collection('posts').findOne({ _id : parseInt(req.params.id) }, function(error, result){
+      res.render('detail.ejs', {posts : result} )
+    })
+    });
+    
+
 module.exports = router;
