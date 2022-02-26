@@ -13,6 +13,13 @@ module.exports = function(passport){
     res.redirect('/posts')
   });
 
+  router.get('/logout',isAuth,function(req,res){
+    req.session.destroy(function(error){
+      res.redirect('/auth/login')
+
+    })
+  });
+
  router.get('/signup', function(req, res){
   res.render('signup.ejs');
 });
@@ -48,23 +55,20 @@ router.post('/signup/id-check', function(req, res){
   });
 });
 
-router.get('/detail', function(req, res){
-  res.render('detail.ejs')
-})
-
-router.get('/detail/:id', function(req, res){
-req.app.db.collection('posts').findOne({ _id : parseInt(req.params.id) }, function(error, result){
-  res.render('detail.ejs', {posts : result} )
-})
-});
-
-
  function isnotAuth(req,res,next){
   if(req.user){
       res.send('로그인 하셨습니다.');
   }else{
       next();
   }
+}
+
+function isAuth(req,res,next){
+  if(req.user){
+   next()
+  }else{
+   res.send('로그인을 해주세요.')
+ }
 }
 
   return router;
