@@ -1,20 +1,23 @@
 .navbar-text {
   display: inline-block;
-  padding-right: 200px;
-  padding-left: 200px;
+  padding-right: 10%;
+  padding-left: 10%;
   font-size: 40px;
   font-weight: 620;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 1.5%;
+  padding-bottom: 2%;
   color: black;
   position: absolute;
   left: 50%;
   transform: translate(-50%);
 }
 
+.nav-item{
+  padding:1%;
+}
+
 .nav-link {
   display: block;
-  padding: 20px;
   padding-top: 45px;
   font-size: 16px;
   color: black;
@@ -33,10 +36,10 @@ a:active {
   text-decoration: none;
 }
 
-.pig-control {
-  display: inline-block;
-  position: absolute;
-  top: 120px;
-  left: 150px;
-  padding: 10px;
-}
+.pig-control{
+    display:inline-block;
+    position:absolute;
+    top:17%;
+    left:10%;
+   
+  }

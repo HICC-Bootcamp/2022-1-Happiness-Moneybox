@@ -18,10 +18,16 @@ router.post('/', function(req, res){
    
     var design=req.body.design;
 
-    req.app.db.collection('information').updateOne({userId : req.user.userId},{ $set: {nowdesign: design} },function(error,result){
-        if(error){return console.log(error)}
-    })
+    if(design!='original'){
+        req.app.db.collection('information').updateOne({userId : req.user.userId},{ $set: {nowdesign: design} },function(error,result){
+            if(error){return console.log(error)}
+        })
+       
+    }
+
     res.redirect('/posts');
+
+   
  });
 
 module.exports = router;
