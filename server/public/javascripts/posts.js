@@ -35,15 +35,9 @@ $(".back").click(function(){
 })
 
 var year = new Date().getFullYear();
-var date = new Date("12,31,2022").getTime();
-var now = new Date();
-var year = now.getFullYear();
-var dday = Math.floor((date - now) / (1000 * 60 * 60 * 24)) + 1;
-//dday = 0;
-$("#d-day").html(dday);
 $("#year").html(year);
 
-var date = new Date("2,28,2022 21:24:00").getTime();
+var date = new Date("2,28,2022 00:52:00").getTime();
 var now = new Date().getTime();
 var time=Math.floor((date-now)/(1000));
 var day=1;
@@ -68,7 +62,7 @@ var x=setInterval(function(){
     $("#picture").hide();
     $(".delete-send").hide();
     $(".add").hide();
-    $(".post").css({ "pointer-events": "ato","font-weight":"bold" });
+    $(".post").css({ "pointer-events": "auto","font-weight":"bold" });
     $(".dday-congratulation").show();
     $(".last-day").hide();
   }
@@ -117,6 +111,4 @@ function empty_check(){
       swal("날짜를 입력하세요.");
       return false;
   }
-
-
 }

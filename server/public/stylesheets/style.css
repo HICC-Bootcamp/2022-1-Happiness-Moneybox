@@ -44,14 +44,6 @@ label {
 }
 
 /* list */
-/* #picture {
-  width: 600px;
-  height: 500px;
-  position: absolute;
-  right: 55%;
-  text-align: center;
-} */
-
 
 #list {
   width: 600px;
@@ -99,6 +91,8 @@ label {
 
 .post {
   color: black;
+  pointer-events: none;
+
 }
 
 .clock-control {
