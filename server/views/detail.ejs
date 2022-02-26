@@ -17,14 +17,39 @@
     
   </style>
   <body style="text-align: center;"  >
+    <style>
+      .bt{
+        position: absolute;
+        top: 80%;
+        right:3%;
+      }
+      .text{
+        display: inline-block;
+        position: absolute;
+        top:30%;
+        left:20%;
+        right:20%;
+        margin: 5px;
+        padding: 20px;
+      }
+    </style>
     
     <h1>Happy Money</h1><br><br>
 
       <p><font size="5"><strong>Date.</strong>  <%= posts.date %></font></p>
       <p><font size="5"><strong>Title.</strong>  <%= posts.title %> <strong>Happy Money.</strong> <%= posts.money %>won</font></p>
       <br><br>
-      <p><div><font size="4"><%= posts.text %> 
-      </font></div></p>
+      <div class="text"><font size="4"><%= posts.text %> 
+      </font></div>
+
+      
+  
+      <div class="bt">
+        <button type="button" 
+        class="btn btn-info"  
+        onclick="location.href='/posts' " >Back
+        </button>
+      </div>
       
       
       

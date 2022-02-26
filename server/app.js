@@ -33,5 +33,5 @@ app.get('/detail/:id', function(req, res){
   db.collection('posts').findOne({ _id : parseInt(req.params.id) }, function(error, result){
     res.render('detail.ejs', {posts : result} )
   })
-  });
+});
   
