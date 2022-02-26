@@ -55,16 +55,6 @@ router.post('/signup/id-check', function(req, res){
   });
 });
 
-router.get('/detail', function(req, res){
-  res.render('detail.ejs')
-})
-
-router.get('/detail/:id', function(req, res){
-req.app.db.collection('posts').findOne({ _id : parseInt(req.params.id) }, function(error, result){
-  res.render('detail.ejs', {posts : result} )
-})
-});
-
 
  function isnotAuth(req,res,next){
   if(req.user){
