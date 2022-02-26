@@ -31,7 +31,7 @@ router.post('/signup', function(req, res){
      ,function(error, result){
       console.log(error);
     });
-    req.app.db.collection('happymoney').insertOne({userId: req.body.id, Happy_money: parseInt(0)
+    req.app.db.collection('information').insertOne({userId: req.body.id, happy_money: parseInt(0) , nowdesign: '/public/images/pig.png'
       },function(error, result){
     res.redirect('/auth/login');
  })

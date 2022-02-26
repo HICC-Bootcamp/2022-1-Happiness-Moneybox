@@ -4,8 +4,9 @@
     <%- include('head.ejs') %>
   </head>
   <body>
+    <%- include('navstyle.html') %>
     <div id="picture">
-      <img src="public/images/pig.jpg" id="picture-inside" />
+      <img src="<%= design %>" id="picture-inside" />
       <div id="total-money"><%= money %>원</div>
     </div>
     <div id="list">
@@ -14,6 +15,9 @@
         <h4 class="text-center">
           D-day까지 <span id="d-day"></span>일 남았습니다.
         </h4>
+        <button class="btn dday_button btn-primary btn-list">
+          D-day Countdown
+        </button>
       </div>
       <div class="table-wrapper mt-5">
         <table class="table">
@@ -30,11 +34,18 @@
             <tr>
               <td><%= posts[i].date %></td>
               <td>
-                <a class="post" href="#"><%= posts[i].title %></a>
+                <a class="post" href="/posts/<%= posts[i]._id %>">
+                  <%= posts[i].title %></a>
               </td>
-              <td><%= posts[i].money %></td>
+              <td id="delete-money"><%= posts[i].money %></td>
               <td class="delete-on">
-                <button type="button" class="btn btn-danger delete">X</button>
+                <button
+                  type="button"
+                  class="btn btn-danger delete"
+                  data-id="<%= posts[i]._id %>"
+                >
+                  X
+                </button>
               </td>
             </tr>
             <% } %>
@@ -44,7 +55,11 @@
       <button type="button" class="btn btn-primary mt-5 btn-list delete-send">
         Delete
       </button>
-      <button type="button" class="btn btn-primary mt-5 btn-list add">
+      <button
+        type="button"
+        class="btn btn-primary mt-5 btn-list add"
+        onclick="location.href='/posts/write' "
+      >
         Add
       </button>
       <div class="mt-4 dday-congratulation">
@@ -55,6 +70,21 @@
         <h4 class="text-center">행복한 기억을 <%= i %>개,</h4>
         <h4 class="text-center">총 <%= money %>원 저금하였습니다.</h4>
       </div>
+    </div>
+
+    <div class="vanish">
+      <div class="clock-control">
+        <img src="/public/images/clock.png" width="80%" />
+      </div>
+
+      <div class="text-control">
+        <%= user.nickname %> 님, D-day 까지
+        <span id="demo"></span> 남았습니다..
+      </div>
+
+      <button type="button" class="btn mt-5 btn-primary btn-list back">
+        Back
+      </button>
     </div>
 
     <script type="text/javascript" src="/public/javascripts/posts.js"></script>

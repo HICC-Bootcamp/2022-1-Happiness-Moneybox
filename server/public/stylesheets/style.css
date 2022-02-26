@@ -1,3 +1,4 @@
+/* signup */
 select {
   padding: 6px;
   vertical-align: middle;
@@ -42,6 +43,7 @@ label {
   width: 120px;
 }
 
+/* list */
 #picture {
   width: 600px;
   height: 500px;
@@ -106,4 +108,120 @@ label {
 
 .post {
   color: black;
+}
+
+.clock-control {
+  display: inline-block;
+  position: absolute;
+  top: 20%;
+  left: 35%;
+}
+
+#demo {
+  color: rgb(155, 89, 182);
+}
+
+.text-control {
+  display: inline-block;
+  position: absolute;
+  top: 78%;
+  left: 25%;
+  font-size: 35px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 600;
+  color: black;
+}
+
+.vanish {
+  display: none;
+}
+
+.back {
+  background-color: rgb(155, 89, 182) !important;
+  border: rgb(155, 89, 182) !important;
+  display: inline-block;
+  position: absolute;
+  top: 85%;
+  left: 45%;
+}
+
+.dday_button {
+  background-color: rgb(155, 89, 182) !important;
+  border: rgb(155, 89, 182) !important;
+}
+
+/* write */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap");
+
+.form-style {
+  margin: 50px;
+  margin-right: 0;
+  margin-left: 55%;
+  display: inline-block;
+}
+
+.btn-group {
+  width: 500px;
+}
+
+.custom-select {
+  width: 230px;
+}
+
+.date {
+  padding-left: 40px;
+  width: 270px;
+}
+
+.money-control {
+  display: inline-block;
+  position: absolute;
+  top: 78%;
+  left: 20%;
+  padding: 10px;
+  font-size: 38px;
+  font-weight: 600;
+  color: rgb(241, 196, 15);
+}
+
+/* change */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap");
+
+.text-control {
+  display: inline-block;
+  position: absolute;
+  top: 78%;
+  left: 25%;
+  font-size: 35px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 600;
+  color: black;
+}
+
+.font-control {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 30px;
+  padding-right: 10px;
+}
+
+#title {
+  display: block;
+  padding-left: 5%;
+  padding-top: 2%;
+  font-weight: 530;
+  font-size: 25px;
+}
+
+.picture {
+  display: inline;
+  width: 20%;
+  padding: 3%;
+}
+
+.picture-control {
+  display: inline-block;
+  position: absolute;
+  top: 27%;
+  left: 15%;
+  right: 10%;
 }
