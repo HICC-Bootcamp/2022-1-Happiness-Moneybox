@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('head.ejs') %>
+  </head>
+  <body>
+    <%- include('navstyle.html') %>
+
+    <div id="picture">
+
+    <div class="pig-control">
+      <img src=" <%= design %>" width="90%" />
+    </div>
+
+    <div class="money-control" id= "total-money"><%= money %> won</div>
+
+    </div>
+
+    <div id="list">
+      <div class="mt-5 last-day">
+        <h4 class="text-center"><%= user.nickname %>님,</h4>
+        <h4 class="text-center">
+          D-day까지 <span id="d-day"></span>일 남았습니다.
+        </h4>
+        <button class="btn dday_button btn-primary btn-list">
+          D-day Countdown
+        </button>
+      </div>
+      <div class="table-wrapper mt-5">
+        <table class="table">
+          <thead>
+            <tr class="table-secondary">
+              <th scope="col">Date</th>
+              <th scope="col">Title</th>
+              <th scope="col">Happy money</th>
+              <th class="delete-on" scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% var i; %> <% for(i=0; i < posts.length; i++){ %>
+            <tr>
+              <td><%= posts[i].date %></td>
+              <td>
+                <a class="post" href="/posts/<%= posts[i]._id %>">
+                  <%= posts[i].title %></a>
+              </td>
+              <td id="delete-money"><%= posts[i].money %></td>
+              <td class="delete-on">
+                <button
+                  type="button"
+                  class="btn btn-danger delete"
+                  data-id="<%= posts[i]._id %>"
+                >
+                  X
+                </button>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      <button type="button" class="btn btn-primary mt-5 btn-list delete-send">
+        Delete
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary mt-5 btn-list add"
+        onclick="location.href='/posts/write' "
+      >
+        Add
+      </button>
+      <div class="mt-4 dday-congratulation">
+        <h4 class="text-center">축하합니다!</h4>
+        <h4 class="text-center">
+          <span id="year"></span>년 <%= user.nickname %>님은
+        </h4>
+        <h4 class="text-center">행복한 기억을 <%= i %>개,</h4>
+        <h4 class="text-center">총 <%= money %>원 저금하였습니다.</h4>
+      </div>
+    </div>
+
+    <div class="vanish">
+      <div class="clock-control">
+        <img src="/public/images/clock.png" width="80%" />
+      </div>
+
+      <div class="text-control">
+        <%= user.nickname %> 님, D-day 까지
+        <span id="demo"></span> 남았습니다..
+      </div>
+
+      <button type="button" class="btn mt-5 btn-primary btn-list back">
+        Back
+      </button>
+    </div>
+
+    <script type="text/javascript" src="/public/javascripts/posts.js"></script>
+  </body>
+</html>

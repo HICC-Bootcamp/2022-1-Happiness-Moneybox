@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      
+        <%- include('head.ejs') %>
+
+    </head>
+
+  <body>
+
+    <%- include('navstyle.html') %>
+
+    <h2 class="font-design mb-3" id="title">디자인 변경</h2>
+    
+    <div class="picture-control">
+
+      <div>
+        <img src="public/images/bottle.png" class="picture-design" title="bottle">
+        <img src="public/images/longbottle.png" class="picture-design" title="long bottle" >
+        <img src="public/images/pig.png" class="picture-design" title="pig" >
+        <img src="public/images/piggybank.png" class="picture-design"  title="piggy bank">
+      </div>
+      <div>
+        <img src="public/images/beaker.png" class="picture-design" title="beaker">
+        <img src="public/images/purplebeaker.png" class="picture-design" title="purple beaker">
+        <img src="public/images/giftboxes.png" class="picture-design" title="gift boxes" >
+        <img src="public/images/giftbox.png" class="picture-design" title="gift box" >
+      </div>
+
+    </div>
+
+    <form action="/design" method="POST">
+      
+      <div class="select-control">
+        <select class="custom-select select-detail" name="design">
+            <option selected value="original">Design</option>
+            <option value='/public/images/bottle.png' >bottle</option>
+            <option value='/public/images/longbottle.png' >long bottle</option>
+            <option value='/public/images/pig.png' >pig</option>
+            <option value='/public/images/piggybank.png'>piggy bank</option>
+            <option value='/public/images/beaker.png' >beaker</option>
+            <option value='/public/images/purplebeaker.png' >purple beaker</option>
+            <option value='/public/images/giftboxes.png' >gift boxes</option>
+            <option value='/public/images/giftbox.png' >gift box</option>
+            
+        </select>
+        <button type="submit" class="btn btn-Light button-detail" >Submit</button>
+      </div>
+
+    </form>
+    
+    
+  </body>
+  
+</html>
