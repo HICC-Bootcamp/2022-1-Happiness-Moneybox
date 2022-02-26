@@ -21,9 +21,7 @@ router.post('/', function(req, res){
     req.app.db.collection('information').updateOne({userId : req.user.userId},{ $set: {nowdesign: design} },function(error,result){
         if(error){return console.log(error)}
     })
-
-    res.send("응답완료");
-
+    res.redirect('/posts');
  });
 
 module.exports = router;
