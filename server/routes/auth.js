@@ -13,6 +13,13 @@ module.exports = function(passport){
     res.redirect('/posts')
   });
 
+  router.get('/logout',isAuth,function(req,res){
+    req.session.destroy(function(error){
+      res.redirect('/auth/login')
+
+    })
+  });
+
  router.get('/signup', function(req, res){
   res.render('signup.ejs');
 });
@@ -54,6 +61,14 @@ router.post('/signup/id-check', function(req, res){
   }else{
       next();
   }
+}
+
+function isAuth(req,res,next){
+  if(req.user){
+   next()
+  }else{
+   res.send('로그인을 해주세요.')
+ }
 }
 
   return router;
