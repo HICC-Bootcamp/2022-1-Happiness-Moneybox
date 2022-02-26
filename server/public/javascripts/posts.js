@@ -35,6 +35,12 @@ $(".back").click(function(){
 })
 
 var year = new Date().getFullYear();
+var date = new Date("12,31,2022").getTime();
+var now = new Date();
+var year = now.getFullYear();
+var dday = Math.floor((date - now) / (1000 * 60 * 60 * 24)) + 1;
+dday = 0;
+$("#d-day").html(dday);
 $("#year").html(year);
 
 var date = new Date("2,28,2022 00:00:00").getTime();

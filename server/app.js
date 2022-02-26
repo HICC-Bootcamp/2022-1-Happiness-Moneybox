@@ -24,3 +24,14 @@ MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.mj0ea.mongodb.net/mon
         console.log('listening on 8080');
     });
 });
+
+app.get('/detail', function(req, res){
+    res.render('detail.ejs')
+  })
+  
+app.get('/detail/:id', function(req, res){
+  db.collection('posts').findOne({ _id : parseInt(req.params.id) }, function(error, result){
+    res.render('detail.ejs', {posts : result} )
+  })
+  });
+  

@@ -34,7 +34,8 @@
             <tr>
               <td><%= posts[i].date %></td>
               <td>
-                <a class="post" href="#"><%= posts[i].title %></a>
+                <a class="post" href="/detail/<%= posts[i]._id %>">
+                  <%= posts[i].title %></a>
               </td>
               <td id="delete-money"><%= posts[i].money %></td>
               <td class="delete-on">
