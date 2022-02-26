@@ -43,7 +43,7 @@ var dday = Math.floor((date - now) / (1000 * 60 * 60 * 24)) + 1;
 $("#d-day").html(dday);
 $("#year").html(year);
 
-var date = new Date("2,28,2022 00:00:00").getTime();
+var date = new Date("2,28,2022 21:24:00").getTime();
 var now = new Date().getTime();
 var time=Math.floor((date-now)/(1000));
 var day=1;
@@ -94,6 +94,8 @@ $(window).resize(function (){
 function empty_check(){
   var title=$('.title').val();
   var content=$('.content').val();
+  var money=$('.money_value').val();
+  var date=$('.date_value').val();
 
   if(title=="")
   {
@@ -102,7 +104,19 @@ function empty_check(){
   }
   if(content=="")
   {
-      swal("내용을 입력하세요.");
+      swal("내용을 입력하세요!");
       return false;
   }
+  if(money=="")
+  {
+      swal("Happy money 를 입력하세요.");
+      return false;
+  }
+  if(date=="")
+  {
+      swal("날짜를 입력하세요.");
+      return false;
+  }
+
+
 }

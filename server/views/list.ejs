@@ -5,10 +5,17 @@
   </head>
   <body>
     <%- include('navstyle.html') %>
+
     <div id="picture">
-      <img src="<%= design %>" id="picture-inside" />
-      <div id="total-money"><%= money %>원</div>
+
+    <div class="pig-control">
+      <img src=" <%= design %>" width="90%" />
     </div>
+
+    <div class="money-control" id= "total-money"><%= money %> won</div>
+
+    </div>
+
     <div id="list">
       <div class="mt-5 last-day">
         <h4 class="text-center"><%= user.nickname %>님,</h4>
