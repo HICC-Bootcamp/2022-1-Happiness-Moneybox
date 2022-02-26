@@ -4,8 +4,9 @@
     <%- include('head.ejs') %>
   </head>
   <body>
+    <%- include('navstyle.html') %>
     <div id="picture">
-      <img src="public/images/pig.jpg" id="picture-inside" />
+      <img src="public/images/pig.png" id="picture-inside" />
       <div id="total-money"><%= money %>원</div>
     </div>
     <div id="list">
@@ -30,11 +31,18 @@
             <tr>
               <td><%= posts[i].date %></td>
               <td>
-                <a class="post" href="#"><%= posts[i].title %></a>
+                <a class="post" href="/detail/<%= posts[i]._id %>">
+                  <%= posts[i].title %></a>
               </td>
-              <td><%= posts[i].money %></td>
+              <td id="delete-money"><%= posts[i].money %></td>
               <td class="delete-on">
-                <button type="button" class="btn btn-danger delete">X</button>
+                <button
+                  type="button"
+                  class="btn btn-danger delete"
+                  data-id="<%= posts[i]._id %>"
+                >
+                  X
+                </button>
               </td>
             </tr>
             <% } %>
@@ -44,7 +52,11 @@
       <button type="button" class="btn btn-primary mt-5 btn-list delete-send">
         Delete
       </button>
-      <button type="button" class="btn btn-primary mt-5 btn-list add">
+      <button
+        type="button"
+        class="btn btn-primary mt-5 btn-list add"
+        onclick="location.href='/posts/write' "
+      >
         Add
       </button>
       <div class="mt-4 dday-congratulation">
